@@ -2,95 +2,36 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>Flappy Bird NN</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+    <title>Flappy Bird Login</title>
     <link
       href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="login.css" />
   </head>
   <body>
-    <!-- Instructions panel (dynamically updated based on mode) -->
-    <div id="instructions-panel" class="panel">
-      <h2 id="instructions-title">How to Play</h2>
-      <!-- Human Mode Instructions -->
-      <div id="human-instructions">
-        <p>
-          <strong
-            >Click on the screen, or use your spacebar or up arrow to get
-            started.</strong
-          >
-        </p>
-        <p>Fly the bird as far as you can without hitting a pipe.</p>
-      </div>
-      <!-- AI Mode Instructions and Controls (hidden by default) -->
-      <div id="ai-instructions" style="display: none">
-        <p>
-          <strong>What is a Mutation?</strong> Random changes in the AI's
-          behavior to improve performance.
-        </p>
-        <p>
-          <strong>What is Population?</strong> Number of birds learning to play.
-        </p>
-        <div class="ai-controls">
-          <label for="mutation-rate">Mutation Rate (0-1):</label>
-          <input
-            type="number"
-            id="mutation-rate"
-            min="0"
-            max="1"
-            step="0.01"
-            value="0.1"
-          />
-          <label for="population-size">Population Size:</label>
-          <input
-            type="number"
-            id="population-size"
-            min="1"
-            max="100"
-            value="50"
-          />
-          <button id="start-ai-btn">Start AI Mode</button>
+    <div class="overlay">
+      <div class="login-container">
+        <h2>Welcome to Flappy Game!</h2>
+        <form id="login-form">
+          <label for="first-name">First Name:</label>
+          <input type="text" id="first-name" required />
+          <label for="last-name">Last Name:</label>
+          <input type="text" id="last-name" required />
+          <label for="grade">Grade:</label>
+          <input type="number" id="grade" min="0" max="12" required />
+          <button type="submit">Submit</button>
+        </form>
+        <div id="game-link" style="display: none">
+          <p>Welcome! Click below to play:</p>
+          <a href="index.html" class="game-button">Play Flappy Bird</a>
+          <p>Teachers: Export all login data here:</p>
+          <button id="export-btn" class="export-button">
+            Download login.json
+          </button>
         </div>
       </div>
     </div>
-
-    <!-- Scores panel -->
-    <div id="scores-panel" class="panel">
-      <h2>Scores</h2>
-      <p>All Time Best Score: <span id="allTimeBest">0</span></p>
-      <p>Current Best Score: <span id="currentBest">0</span></p>
-    </div>
-
-    <!-- Game Over overlay -->
-    <div id="gameOverScreen" class="game-over-overlay">
-      <div>
-        <h2>GAME OVER</h2>
-        <p>Press SPACE to Restart</p>
-      </div>
-    </div>
-
-    <!-- Mode Toggle Panel  -->
-    <div id="mode-toggle-panel" class="panel">
-      <h2>Mode</h2>
-      <button id="toggleModeBtn">Switch to AI Mode</button>
-    </div>
-    <!-- p5 canvas container -->
-    <div id="canvas-container"></div>
-
-    <!-- NEW: Genetic Algorithm info panel, hidden by default -->
-    <div id="ga-info-panel" style="display: none">
-      <h2>Genetic Algorithm</h2>
-      <p>
-        A Genetic Algorithm helps our AI birds learn over many generations. The
-        best birds pass on their abilities, and small random changes (mutations)
-        help them discover new ways to avoid the pipes!
-      </p>
-    </div>
-
-    <!-- Load scripts -->
-    <script src="classes.js"></script>
-    <script src="sketch.js"></script>
+    <script src="login.js"></script>
   </body>
 </html>
