@@ -13,3 +13,9 @@ Live Demo: [https://dcbhupendra7.github.io/Flappy-Bird-Game/](https://dcbhupendr
 
 You can find the documentation detials here in this GitHub Page.
 https://dcbhupendra7.github.io/Flappy-Bird-Doc/
+
+##Acknowledgements
+
+- \*\*Inspired by the classic Flappy Bird game. https://flappybird.io/
+- \*\*Built as part of a student project to explore HTML, CSS, JavaScript, and Firebase Firestore integration.
+- \*\*Special thanks to Firebase documentation and GitHub Actions for enabling secure deployment.
