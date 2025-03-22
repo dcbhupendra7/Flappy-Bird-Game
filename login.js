@@ -1,50 +1,49 @@
+// Get a reference to Firestore
+const db = firebase.firestore();
+
+// Handle form submission
 document.getElementById("login-form").addEventListener("submit", (e) => {
   e.preventDefault();
 
   const firstName = document.getElementById("first-name").value.trim();
   const lastName = document.getElementById("last-name").value.trim();
-  const grade = parseInt(document.getElementById("grade").value);
+  const grade = document.getElementById("grade").value; // Keep as string to match Firestore schema
 
-  if (firstName && lastName && grade >= 0 && grade <= 12) {
+  // Validate grade as a number, but store as string
+  const gradeNum = parseInt(grade);
+  if (firstName && lastName && gradeNum >= 0 && gradeNum <= 12) {
     const student = {
       firstName,
       lastName,
-      grade,
+      grade, // Stored as string (e.g., "5") to match Firestore schema
       timestamp: new Date().toISOString(),
       bestScore: 0, // Placeholder for future score tracking
     };
 
-    // Load existing data from localStorage
-    let students = JSON.parse(localStorage.getItem("flappyStudents") || "[]");
-    students.push(student);
-
-    // Save back to localStorage
-    localStorage.setItem("flappyStudents", JSON.stringify(students));
-
-    // Hide the form and show the game link with export option
-    document.getElementById("login-form").style.display = "none";
-    document.getElementById("game-link").style.display = "block";
-  }
-});
-
-// Add event listener for the export button
-document.getElementById("export-btn").addEventListener("click", () => {
-  const students = JSON.parse(localStorage.getItem("flappyStudents") || "[]");
-  if (students.length > 0) {
-    downloadLoginData(students);
+    // Save the student data to Firestore
+    db.collection("students")
+      .add(student)
+      .then((docRef) => {
+        console.log("Student info saved with ID:", docRef.id);
+        // Update the game link with student info in URL parameters
+        const queryString = new URLSearchParams({
+          firstName: student.firstName,
+          lastName: student.lastName,
+          grade: student.grade,
+        }).toString();
+        const gameLink = document.querySelector(".game-button");
+        gameLink.href = `game.html?${queryString}`;
+        // Hide the form and show the game link (maintains current UI behavior)
+        document.getElementById("login-form").style.display = "none";
+        document.getElementById("game-link").style.display = "block";
+      })
+      .catch((error) => {
+        console.error("Error saving student info:", error);
+        alert("Failed to save student information. Please try again.");
+      });
   } else {
-    alert("No login data to export yet!");
+    alert(
+      "Please fill in all fields correctly. Grade must be between 0 and 12."
+    );
   }
 });
-
-function downloadLoginData(students) {
-  const dataStr =
-    "data:text/json;charset=utf-8," +
-    encodeURIComponent(JSON.stringify(students, null, 2));
-  const downloadAnchor = document.createElement("a");
-  downloadAnchor.setAttribute("href", dataStr);
-  downloadAnchor.setAttribute("download", "login.json");
-  document.body.appendChild(downloadAnchor);
-  downloadAnchor.click();
-  document.body.removeChild(downloadAnchor);
-}

@@ -25,13 +25,31 @@
         <div id="game-link" style="display: none">
           <p>Welcome! Click below to play:</p>
           <a href="game.html" class="game-button">Play Flappy Bird</a>
-          <p>Teachers: Export all login data here:</p>
+          <!-- <p>Teachers: Export all login data here:</p>
           <button id="export-btn" class="export-button">
             Download login.json
-          </button>
+          </button> -->
         </div>
       </div>
     </div>
+    <!-- Firebase SDK (Compatibility Mode) -->
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore-compat.js"></script>
+
+    <!-- Initialize Firebase -->
+    <script>
+      // Firebase configuration
+      const firebaseConfig = {
+        apiKey: "AIzaSyAyDe6VdP_upXgI96xbHb4OE69-HzZ29Oo",
+        authDomain: "flappy-bird-game-ea2ed.firebaseapp.com",
+        projectId: "flappy-bird-game-ea2ed",
+        storageBucket: "flappy-bird-game-ea2ed.firebasestorage.app",
+        messagingSenderId: "817439627642",
+        appId: "1:817439627642:web:7787170407772ac3b6dec3",
+      };
+      firebase.initializeApp(firebaseConfig);
+    </script>
+
     <script src="login.js"></script>
   </body>
 </html>
