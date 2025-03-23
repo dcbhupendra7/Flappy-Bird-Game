@@ -24,7 +24,7 @@ jobs:
 
       - name: Stage Generated Files
         run: |
-          git add ./firebase-config.js
+          git add -f ./firebase-config.js
 
       - name: Debug - List Files Before Deployment
         run: |
