@@ -1,0 +1,208 @@
+/* Reset margins and set background */
+html,
+body {
+  margin: 0;
+  padding: 0;
+  /* Change background to a subtle gradient for a more modern look */
+  background: linear-gradient(
+    to bottom,
+    #87ceeb 0%,
+    #e0f7fa 100%
+  ); /* Light sky blue to white */
+  font-family: "Press Start 2P", sans-serif;
+}
+
+canvas {
+  display: block;
+  margin: 0 auto; /* Center the canvas horizontally */
+  /* Add a more refined border with a subtle shadow for depth */
+  border: 3px solid #2c3e50; /* Darker slate color */
+  border-radius: 8px; /* Rounded corners for a softer look */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Subtle shadow for a 3D effect */
+}
+
+/* Panel styling for a more professional look */
+.panel {
+  position: absolute;
+  /* Use a semi-transparent white background with a slight blur for a modern "glass" effect */
+  background-color: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(
+    5px
+  ); /* Adds a frosted glass effect (supported in modern browsers) */
+  color: #2c3e50; /* Dark slate color for better contrast */
+  padding: 20px; /* Slightly more padding for breathing room */
+  border-radius: 12px; /* Softer rounded corners */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15); /* Softer shadow for depth */
+  max-width: 250px; /* Slightly wider for better readability */
+  border: 1px solid rgba(0, 0, 0, 0.1); /* Subtle border for definition */
+  /* Remove text shadow since the background is now lighter */
+  text-shadow: none;
+}
+
+/* Instructions panel on the left side */
+#instructions-panel {
+  top: 20px;
+  left: 20px;
+}
+
+#instructions-panel h2 {
+  margin-top: 0;
+  font-size: 18px; /* Slightly larger for emphasis */
+  color: #e74c3c; /* A professional red accent color */
+  border-bottom: 2px solid #e74c3c; /* Match the border to the text color */
+  padding-bottom: 8px; /* More space under the heading */
+}
+
+/* Improve readability of the instructions text */
+#instructions-panel p {
+  font-size: 12px; /* Slightly larger for readability */
+  line-height: 1.5; /* Better line spacing */
+  margin: 10px 0; /* More consistent spacing */
+}
+
+/* Scores panel on the right side */
+#scores-panel {
+  top: 20px;
+  right: 20px;
+  text-align: right;
+}
+
+#scores-panel h2 {
+  margin-top: 0;
+  font-size: 18px; /* Slightly larger for emphasis */
+  color: #e74c3c; /* Match the red accent color */
+  border-bottom: 2px solid #e74c3c; /* Match the border to the text color */
+  padding-bottom: 8px; /* More space under the heading */
+}
+
+/* Style the score values to stand out */
+#scores-panel p {
+  font-size: 12px; /* Slightly larger for readability */
+  line-height: 1.5; /* Better line spacing */
+  margin: 10px 0; /* More consistent spacing */
+}
+
+/* Highlight the score numbers */
+#allTimeBest,
+#currentBest {
+  color: #f1c40f; /* Gold color to signify achievement */
+  font-weight: bold; /* Make the numbers stand out */
+}
+
+/* Game Over overlay: hidden by default */
+.game-over-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  /* Use a darker semi-transparent background with a slight blur */
+  background-color: rgba(44, 62, 80, 0.9); /* Dark slate with transparency */
+  backdrop-filter: blur(3px); /* Subtle blur for a modern effect */
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 24px; /* Slightly larger for emphasis */
+  z-index: 999;
+  opacity: 0; /* Start invisible */
+  transition: opacity 0.5s ease; /* Fade in/out */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6); /* Stronger shadow for readability */
+}
+
+.game-over-overlay.show {
+  opacity: 1; /* Reveal the overlay when .show is added */
+}
+
+/* Style the Game Over text */
+.game-over-overlay h2 {
+  font-size: 36px; /* Larger for impact */
+  color: #e74c3c; /* Red to match the accent color */
+  margin-bottom: 20px; /* More space below the heading */
+}
+
+.game-over-overlay p {
+  font-size: 18px; /* Slightly larger for readability */
+  color: #ecf0f1; /* Light gray for contrast */
+}
+/* NEW: Mode Toggle Panel */
+#mode-toggle-panel {
+  position: absolute;
+  top: 500px; /* or wherever you like */
+  left: 20px;
+  width: 200px;
+  text-align: center;
+  z-index: 9999; /* Higher than any other panel or overlay */
+  pointer-events: auto; /* Ensure it can receive clicks */
+}
+
+/* AI Controls */
+.ai-controls {
+  margin-top: 15px;
+}
+
+.ai-controls label {
+  display: block;
+  font-size: 10px;
+  margin-bottom: 5px;
+  color: #2c3e50;
+}
+
+.ai-controls input {
+  width: 100%;
+  padding: 5px;
+  margin-bottom: 10px;
+  border: 1px solid #2c3e50;
+  border-radius: 5px;
+  font-family: "Press Start 2P", sans-serif;
+  font-size: 10px;
+  background-color: rgba(255, 255, 255, 0.8);
+  color: #2c3e50;
+}
+
+.ai-controls button {
+  width: 100%;
+  padding: 8px;
+  background-color: #e74c3c;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-family: "Press Start 2P", sans-serif;
+  font-size: 12px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.ai-controls button:hover {
+  background-color: #c0392b;
+}
+
+#ga-info-panel {
+  /* Center horizontally, set a max width */
+  margin: 20px auto;
+  max-width: 600px;
+
+  /* A “card” style similar to other panels */
+  background-color: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(5px);
+  color: #2c3e50;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+
+  /* Use the same font size & line-height as instructions */
+  font-size: 12px;
+  line-height: 1.5;
+  text-shadow: none; /* No text shadow, consistent with new panels */
+}
+
+#ga-info-panel h2 {
+  font-size: 18px;
+  color: #e74c3c; /* same accent color as instructions */
+  border-bottom: 2px solid #e74c3c;
+  padding-bottom: 8px;
+  margin-top: 0;
+  margin-bottom: 10px;
+}
