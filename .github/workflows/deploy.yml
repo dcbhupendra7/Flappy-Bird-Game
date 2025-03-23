@@ -22,6 +22,10 @@ jobs:
           echo "  appId: \"${{ secrets.FIREBASE_APP_ID }}\"" >> firebase-config.js
           echo "};" >> firebase-config.js
 
+      - name: Stage Generated Files
+        run: |
+          git add firebase-config.js
+
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
