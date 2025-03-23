@@ -17,5 +17,5 @@ https://dcbhupendra7.github.io/Flappy-Bird-Doc/
 ## Acknowledgements
 
 - Inspired by the classic Flappy Bird game. https://flappybird.io/
-- Built as part of a student project to explore HTML, CSS, JavaScript, and Firebase Firestore integration.
+- Built as part of a student project to to teach K-12 students about Genetic Algorithm.
 - Special thanks to Firebase documentation and GitHub Actions for enabling secure deployment.
