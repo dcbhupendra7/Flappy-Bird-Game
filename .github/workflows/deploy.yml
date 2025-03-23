@@ -22,9 +22,14 @@ jobs:
           echo "  appId: \"${{ secrets.FIREBASE_APP_ID }}\"" >> firebase-config.js
           echo "};" >> firebase-config.js
 
+      - name: Debug - List Files
+        run: |
+          pwd
+          ls -la
+
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
-          personal_token: ${{ secrets.DEPLOY_TOKEN }} # Use the PAT instead of GITHUB_TOKEN
+          github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: .
           keep_files: false
