@@ -13,23 +13,29 @@ jobs:
 
       - name: Inject Firebase Config
         run: |
-          echo "const firebaseConfig = {" > firebase-config.js
-          echo "  apiKey: \"${{ secrets.FIREBASE_API_KEY }}\"," >> firebase-config.js
-          echo "  authDomain: \"${{ secrets.FIREBASE_AUTH_DOMAIN }}\"," >> firebase-config.js
-          echo "  projectId: \"${{ secrets.FIREBASE_PROJECT_ID }}\"," >> firebase-config.js
-          echo "  storageBucket: \"${{ secrets.FIREBASE_STORAGE_BUCKET }}\"," >> firebase-config.js
-          echo "  messagingSenderId: \"${{ secrets.FIREBASE_MESSAGING_SENDER_ID }}\"," >> firebase-config.js
-          echo "  appId: \"${{ secrets.FIREBASE_APP_ID }}\"" >> firebase-config.js
-          echo "};" >> firebase-config.js
+          echo "const firebaseConfig = {" > ./firebase-config.js
+          echo "  apiKey: \"${{ secrets.FIREBASE_API_KEY }}\"," >> ./firebase-config.js
+          echo "  authDomain: \"${{ secrets.FIREBASE_AUTH_DOMAIN }}\"," >> ./firebase-config.js
+          echo "  projectId: \"${{ secrets.FIREBASE_PROJECT_ID }}\"," >> ./firebase-config.js
+          echo "  storageBucket: \"${{ secrets.FIREBASE_STORAGE_BUCKET }}\"," >> ./firebase-config.js
+          echo "  messagingSenderId: \"${{ secrets.FIREBASE_MESSAGING_SENDER_ID }}\"," >> ./firebase-config.js
+          echo "  appId: \"${{ secrets.FIREBASE_APP_ID }}\"" >> ./firebase-config.js
+          echo "};" >> ./firebase-config.js
 
-      - name: Debug - List Files
+      - name: Stage Generated Files
+        run: |
+          git add ./firebase-config.js
+
+      - name: Debug - List Files Before Deployment
         run: |
           pwd
           ls -la
+          cat ./firebase-config.js
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: .
+          publish_branch: gh-pages
           keep_files: false
