@@ -11,7 +11,7 @@ document.getElementById("login-form").addEventListener("submit", (e) => {
 
   // Validate grade as a number, but store as string
   const gradeNum = parseInt(grade);
-  if (firstName && lastName && gradeNum >= 0 && gradeNum <= 12) {
+  if (firstName && lastName && gradeNum >= 6 && gradeNum <= 12) {
     const student = {
       firstName,
       lastName,
@@ -43,7 +43,7 @@ document.getElementById("login-form").addEventListener("submit", (e) => {
       });
   } else {
     alert(
-      "Please fill in all fields correctly. Grade must be between 0 and 12."
+      "Please fill in all fields correctly. Grade must be between 6 and 12."
     );
   }
 });

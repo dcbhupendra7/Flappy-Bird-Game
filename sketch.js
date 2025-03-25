@@ -53,7 +53,7 @@ function preload() {
 }
 
 function setup() {
-  createCanvas(800, 700);
+  createCanvas(700, 600);
   // Ensure the instructions panel is on top and clickable
   const instructionsPanel = document.getElementById("instructions-panel");
   instructionsPanel.style.zIndex = "9999";
@@ -151,7 +151,7 @@ function draw() {
       console.log(`Generation: ${generation}, Birds Alive: ${birdsAlive}`);
     }
   } else {
-    // Human Mode logic (unchanged)
+    // Human Mode logic
     if (gameOver) {
       background(0, 150);
       fill(255);
