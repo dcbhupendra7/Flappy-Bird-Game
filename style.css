@@ -85,7 +85,7 @@ canvas {
 /* Highlight the score numbers */
 #allTimeBest,
 #currentBest {
-  color: #f1c40f; /* Gold color to signify achievement */
+  color: #f10f0f; /* Gold color to signify achievement */
   font-weight: bold; /* Make the numbers stand out */
 }
 
