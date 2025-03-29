@@ -206,3 +206,13 @@ canvas {
   margin-top: 0;
   margin-bottom: 10px;
 }
+
+#toggleModeBtn {
+  padding: 5px 10px;
+}
+#extra-actions {
+  top: 500px;
+  right: 20px;
+  text-align: center;
+  z-index: 9999;
+}

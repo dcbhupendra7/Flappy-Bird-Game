@@ -66,6 +66,13 @@ function setup() {
   allTimeBestSpan = select("#allTimeBest");
   currentBestSpan = select("#currentBest");
 
+  const gameResetBtn = document.querySelector("#game-reset-btn");
+
+  // Reset Game
+  gameResetBtn.addEventListener("click", function () {
+    window.location.replace("index.html");
+  });
+
   // Mode toggle
   toggleModeBtn.addEventListener("click", () => {
     isAiMode = !isAiMode;
